@@ -1,5 +1,5 @@
 
-from modul import *
+#from modul import *
 
 def menu_choice():
     print('1. Распечатать справочник')
@@ -29,34 +29,35 @@ def menu_choice():
 
     if choice == 6:
         print(add_contact())
-
+        
     return choice
-    
+
+def reading():
+    with open('phonebook.txt') as file:
+        for i in file:
+            print(i)
+
+def find_contact_by_last_name():
+    with open('phonebook.txt') as file:
+        family = input('Введите фамилию: ')
+        for i in file:
+            i = i.split(', ')
+            if i[0] == family:
+                print(i[1])         
 
 
-
-
-# def change_phone_number():
-#     with open('phonebook.txt', "r",encoding='utf-8') as file:
-#         current_phone_number = file.read()
-#     print("Текущий номер телефона:", current_phone_number)
-
-#     number_to_change = input("Введите номер телефона, который вы хотите изменить: ")
-
-#     if number_to_change == current_phone_number:
-#         new_phone_number = input("Введите новый номер телефона: ")
-#         with open('phonebook.txt', "w",encoding='utf-8') as file:
-#             file.write(new_phone_number)
-#         print("Номер телефона успешно изменен!")
+def find_contact_by_number():
+    with open('phonebook.txt') as file:
+        number = int(input('Введите номер: '))
+        family = {}
+        for i in file:
+            key, value = i.split(', ')
+            family[key] = value.strip()
         
-#         new_name = input("Введите новое имя: ")
-#         with open('phonebook.txt', "w",encoding='utf-8') as file:
-#             file.write(new_name)
-#         print("Имя успешно изменено!")
-#     else:
-#         print("Введенный номер телефона не совпадает с текущим номером.")
-
-# change_phone_number()
-
-        
+        for key, value in family.items():
+            if value == str(number):
+                print(key)                
+            
 menu_choice()
+
+
