@@ -1,6 +1,5 @@
 qwe, 123
-fgh, 3459
-hjk, 789
 vbnj, 567000
 hgjj, 6758
 kirill, 37529
+uio, 567
